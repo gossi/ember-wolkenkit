@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+		"allowJs": true,
+		"moduleResolution": "node",
+		"isolatedModules": true,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noEmitOnError": false,
+		"noEmit": true,
+		"inlineSourceMap": true,
+		"inlineSources": true,
+		"baseUrl": ".",
+		"module": "esnext",
+    "paths": {
+      "dummy/tests/*": [
+        "tests/*"
+      ],
+      "dummy/src/*": [
+        "tests/dummy/src/*"
+      ],
+      "ember-wolkenkit/src/*": [
+        "src/*"
+      ],
+      "*": [
+        "types/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "tests/**/*",
+    "types/**/*"
+  ]
+}
