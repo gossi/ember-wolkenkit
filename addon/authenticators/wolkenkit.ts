@@ -1,6 +1,6 @@
 import { inject as service } from '@ember/service';
 import Base from 'ember-simple-auth/authenticators/base';
-import WolkenkitService from 'ember-wolkenkit/src/services/wolkenkit';
+import WolkenkitService from 'ember-wolkenkit/services/wolkenkit';
 
 export default class WolkenkitAuthenticator extends Base {
 	@service wolkenkit!: WolkenkitService;

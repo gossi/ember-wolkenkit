@@ -1,6 +1,6 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
+	"compilerOptions": {
+		"target": "esnext",
 		"allowJs": true,
 		"moduleResolution": "node",
 		"isolatedModules": true,
@@ -21,24 +21,12 @@
 		"inlineSources": true,
 		"baseUrl": ".",
 		"module": "esnext",
-    "paths": {
-      "dummy/tests/*": [
-        "tests/*"
-      ],
-      "dummy/src/*": [
-        "tests/dummy/src/*"
-      ],
-      "ember-wolkenkit/src/*": [
-        "src/*"
-      ],
-      "*": [
-        "types/*"
-      ]
-    }
-  },
-  "include": [
-    "src/**/*",
-    "tests/**/*",
-    "types/**/*"
-  ]
+		"paths": {
+			"dummy/tests/*": ["tests/*"],
+			"dummy/*": ["tests/dummy/app/*"],
+			"ember-wolkenkit/*": ["addon/*"],
+			"*": ["types/*"]
+		}
+	},
+	"include": ["addon/**/*", "app/**/*", "tests/**/*", "types/**/*"]
 }

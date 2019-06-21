@@ -1,10 +1,11 @@
 import { getOwner } from '@ember/application';
 import { A } from '@ember/array';
-import EmberObject from '@ember/object';
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { singularize } from 'ember-inflector';
+import Model from 'ember-wolkenkit/models/model';
 import ModelRegistry from 'ember-wolkenkit/types/registries/model';
+import { seed } from 'ember-wolkenkit/utils/seed';
 import wolkenkit from 'wolkenkit-client';
 
 export default class WokkenkitService extends Service {
@@ -93,7 +94,7 @@ export default class WokkenkitService extends Service {
 				.updated((models: any[]) => {
 					this.debug('liveOne', name, 'updated()', models);
 					if (models.length > 0) {
-						obj.setProperties(models[0]);
+						seed(obj, models[0]);
 					}
 				});
 			resolve(obj);
@@ -104,7 +105,7 @@ export default class WokkenkitService extends Service {
 		return this.connection[context];
 	}
 
-	command(command: string, event: string, idOrPayload: any = {}, maybePayload: any = {}) {
+	command(command: string, event: string, idOrPayload: any = {}, maybePayload: any = {}): Promise<{ event: object, command: object }> {
 		return new Promise((resolve, reject) => {
 			const id = typeof (idOrPayload) === 'string' ? idOrPayload : undefined;
 			const payload = typeof (idOrPayload) !== 'string' ? idOrPayload : maybePayload;
@@ -140,9 +141,9 @@ export default class WokkenkitService extends Service {
 		try {
 			klass = owner.factoryFor(`model:${singularize((name as string))}`).class;
 		} catch (e) {
-			klass = EmberObject;
+			klass = Model;
 		}
 
-		return klass.create(data);
+		return new klass(data);
 	}
 }
